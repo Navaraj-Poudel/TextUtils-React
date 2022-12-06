@@ -1,15 +1,14 @@
 import "./App.css";
 import React, {useState} from "react";
-// import About from "./component/About";
+import About from "./component/About";
 import NavBar from "./component/NavBar";
 import TextForm from "./component/TextForm";
 import Alert from "./component/Alert";
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 
 // import { findAllInRenderedTree } from "react-dom/test-utils";
@@ -27,7 +26,17 @@ const App= ()=> {
       },1500);
       
    }
-   const togglemode =() => {
+   const removeBodyColor = ()=>{
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-primary')
+    document.body.classList.remove('bg-success')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-warning')
+   }
+   const togglemode =(cls) => {
+     removeBodyColor();
+    document.body.classList.add('bg-'+ cls)
       if(mode === 'light'){
       setMode('dark');
       document.body.style.backgroundColor ='#000106';
@@ -58,24 +67,24 @@ const App= ()=> {
 
   return (
     <>
-    {/* <Router>
+    <Router>
     <NavBar about="Aboutus" mode ={mode} togglemode = {togglemode} greenmode = {greenmode}  />
     <Alert  alert = {alert}/>
      <Routes>
-      <Route path="about" element = {<About/>}></Route>
+      <Route path="about" element = {<About mode = {mode} />}></Route>
           <Route path="home" element = 
-          { <TextForm heading="Enter the text to analyze below" mode = {mode} showAlert = {showAlert}/>}>
+          { <TextForm heading="Try TextUtils- word counter,character counter,uppercase,lowercase" mode = {mode} showAlert = {showAlert}/>}>
             
           </Route>
        </Routes>
 
     <div className="container my-3">
     </div>
-    </Router> */}
-             <NavBar about="Aboutus" mode ={mode} togglemode = {togglemode} greenmode = {greenmode}  />
+    </Router>
+             {/* <NavBar about="Aboutus" mode ={mode} togglemode = {togglemode} greenmode = {greenmode}  />
                <Alert  alert = {alert}/>
-
-               <TextForm heading="Enter the text to analyze below" mode = {mode} showAlert = {showAlert}/>
+                <About/>
+               <TextForm heading="Enter the text to analyze below" mode = {mode} showAlert = {showAlert}/> */}
     </>
   );
 }

@@ -61,19 +61,19 @@ const TextForm = (props) => {
           <label htmlFor="MyBox"></label>
           <textarea className="form-control" value={text} style = {{backgroundColor:props.mode==='dark'?'#000106':'white',color:props.mode==='light'?'black':'white'}}  id="MyBox" onChange={(event)=> setText(event.target.value)} rows="9"></textarea>
         </div> <br />
-        <button  className="btn btn-primary mx-2" onClick={()=> handleUpClick() } >Convert to Uppercase</button>
-        <button className="btn btn-primary mx-2" onClick={()=> handleLoClick()}>Convert to Lowercase</button>
-        <button className="btn btn-primary mx-2" onClick={()=> textClear()}>Clear Text</button>
-        <button className="btn btn-primary mx-2" onClick={()=> reverseText()}>Reverse Text</button>
-        <button className="btn btn-primary mx-2" onClick={()=> capitalizeFirstLet() }>First letter captial</button>
-        <button className="btn btn-primary mx-2" onClick={()=>  handleFirstLetterUppercase() }>first capitial of each word</button>
+        <button disabled = {text.length===0}  className="btn btn-primary mx-2 my-2" onClick={()=> handleUpClick() } >Convert to Uppercase</button>
+        <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={()=> handleLoClick()}>Convert to Lowercase</button>
+        <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={()=> textClear()}>Clear Text</button>
+        <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={()=> reverseText()}>Reverse Text</button>
+        <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={()=> capitalizeFirstLet() }>First letter captial</button>
+        <button disabled = {text.length===0} className="btn btn-primary mx-2 my-2" onClick={()=>  handleFirstLetterUppercase() }>first capitial of each word</button>
     </div>
     <div className="container my-3"  style = {{ color:props.mode==='light'?'black':'white'}}>
       <h2> Your Text summary is of :: </h2>
-      <p> {text.split(" ").length} words, {text.length} character</p>
-      <p>{0.08*text.split(" ").length} minutes to read this text</p>
+      <p> {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words, {text.length} character</p>
+      <p>{0.08*text.split(" ").filter((element)=>{return element.length!==0}).length} minutes to read this text</p>
       <h2>Preview</h2>
-      <p>{text.length>0?text:"Enter something in the given textbox..."}</p>
+      <p>{text.length>0?text:"Nothing to prewview"}</p>
     </div>
          </>
   );

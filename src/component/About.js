@@ -1,32 +1,36 @@
 import React, { useState } from "react";
 
-const About = () => {
-    const [myStyle,setMyStyle] = useState({
-        color: 'white',
-        backgroundColor: 'black'
-    })
+const About = (props) => {
+    // const [myStyle,setMyStyle] = useState({
+    //     color: 'white',
+    //     backgroundColor: 'black'
+    // })
 
-    const[btn,setBtn] = useState("Enable light mode")
+  //   const[btn,setBtn] = useState("Enable light mode")
 
-   const locha =()=> {
+  //  const locha =()=> {
 
-        if( myStyle.color === 'white'){
-            setMyStyle({
-                color:'black',
-                backgroundColor:'white'
-            })
-            setBtn("Enable dark mode")
-        }
-        else{
-            setMyStyle ({ 
+  //       if( myStyle.color === 'white'){
+  //           setMyStyle({
+  //               color:'black',
+  //               backgroundColor:'white'
+  //           })
+  //           setBtn("Enable dark mode")
+  //       }
+  //       else{
+  //           setMyStyle ({ 
 
-                color:'white',
-                backgroundColor:'black'
-            })
-            setBtn('Enable light mode')
-        }
-    }
-
+  //               color:'white',
+  //               backgroundColor:'black'
+  //           })
+  //           setBtn('Enable light mode')
+  //       }
+  //   }
+        
+      let myStyle = {
+        color: props.mode === 'dark'?'white':'black',
+        backgroundColor: props.mode === 'dark'?'black':'white',
+      }
 
       return (
     <div className="container" style={myStyle}>
@@ -129,9 +133,9 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="container my-3">
+      {/* <div className="container my-3">
       <button onClick={()=> locha()} type="button" className="btn btn-primary">{btn}</button>
-      </div>
+      </div> */}
     </div>
   )
 }
